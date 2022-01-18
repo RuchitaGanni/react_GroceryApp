@@ -19,7 +19,7 @@ class Cart extends Component {
             totalUnits: 0
         }
 
-       
+
     }
 
     placeOrder2 = () => {
@@ -66,9 +66,12 @@ class Cart extends Component {
 
     checkConn = (data) => {
         console.log(data, 'connestabls')
-        this.setState({totalCost:data.totalCost})
-        this.setState({orderid:data.orderid})
+        this.setState({ totalCost: data.totalCost })
+        this.setState({ orderid: data.orderid })
     }
+
+
+
 
     render() {
         return (
@@ -82,15 +85,18 @@ class Cart extends Component {
                     {/* <form action="http://zompay.herokuapp.com/paynow" method="POST"> */}
                     {/* http://localhost:4100/paynow */}
                     {/* action="https://edu-payment.herokuapp.com/paynow" method="POST" */}
-                    <form action="https://edu-payment.herokuapp.com/paynow"  method="POST">
-                    <Table cart={this.state.carts} check={(datacheck) => { this.checkConn(datacheck) }} />                                      
-                    <input type="hidden" name="amount" value={this.state.totalCost} />
-                    <input type="hidden" name="id" value={this.state.orderid} />
-                    <input type="hidden" name="hotel_name" value="grocerypayments" />
-                    <input type="hidden" name="name" value="grocerypayments" />
-                    <input type="hidden" name="phone" value="grocerypayments" />
-                    <input type="hidden" name="email" value="grocerypayments" />
-                    <input type="hidden" name="address" value="grocerypayments" />
+                    {/* check={(datacheck) => { this.checkConn(datacheck) }} */}
+
+                    <form action="http://localhost:4100/paynow" method="POST">
+                        <Table cart={this.state.carts} check={(datacheck) => { this.checkConn(datacheck) }} />
+                        <input type="hidden" name="amount" value={this.state.totalCost} />
+                        <input type="hidden" name="id" value={this.state.orderid} />
+                        <input type="hidden" name="hotel_name" value="grocerypayments" />
+                        <input type="hidden" name="name" value="grocerypayments" />
+                        <input type="hidden" name="phone" value="grocerypayments" />
+                        <input type="hidden" name="email" value="grocerypayments" />
+                        <input type="hidden" name="address" value="grocerypayments" />
+                        {/* <button type="submit">Make Payment</button> */}
                     </form>
 
                 </div>
@@ -103,7 +109,7 @@ class Cart extends Component {
         // sessionStorage.removeItem('totalCost')
         // sessionStorage.removeItem('active_pid')
         console.log('here', sessionStorage.getItem('totalCost'))
-       
+
         this.setState({ totalCost: sessionStorage.getItem('totalCost') })
         this.setState({ totalUnits: sessionStorage.getItem('totalUnits') })
         axios.get(cartListUrl)

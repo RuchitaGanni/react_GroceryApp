@@ -110,6 +110,7 @@ const Table = (props) => {
         ;
 
     const placeOrder = () => {
+        console.log('heyyy')
         let orderId = Math.floor(Math.random() * 10000)
         const pids = sessionStorage.getItem('active_pid').split(',');
         let dd = {
@@ -146,9 +147,9 @@ const Table = (props) => {
                         , "order_id": orderId
                     })
                         .then((reponse) => {
-                            setTimeout(function () {
-                                console.log('after update', i)
-                            }, 2000);
+                            // setTimeout(function () {
+                            //     console.log('after update', i)
+                            // }, 200000);
                             console.log('going for payment', i, 'res', reponse)
                         })
                 })
@@ -186,10 +187,10 @@ const Table = (props) => {
                                 <td>{item.product_name}</td>
                                 <td>
                                     <div className="parts2">
-                                        <button className="btn" onClick={(pid, qty) => decrease(item.product_id, item.quantity)} id="minusIcon"><i class="fa fa-minus" aria-hidden="true" style={{ color: "red" }}></i></button>
+                                        <button className="btn" onClick={(pid, qty) => decrease(item.product_id, item.quantity)} id="minusIcon" type="button"><i class="fa fa-minus" aria-hidden="true" style={{ color: "red" }}></i></button>
 
                                         <span className="counter">{item.quantity}</span>
-                                        <button className="btn" onClick={(pid, qty) => increase(item.product_id, item.quantity)} id="plusIcon"><i class="fa fa-plus" aria-hidden="true" style={{ color: "green" }}></i></button>
+                                        <button className="btn" onClick={(pid, qty) => increase(item.product_id, item.quantity)} id="plusIcon" type="button"><i class="fa fa-plus" aria-hidden="true" style={{ color: "green" }}></i></button>
 
                                     </div>
                                 </td>
@@ -216,7 +217,7 @@ const Table = (props) => {
                 <div className="checkOutDiv">
 
 
-                    <button id="checkOut" className="btn btn-primary pull-right" onClick={placeOrder} type="submit" >
+                    <button id="checkOut" className="btn btn-primary pull-right" onClick={placeOrder}  >
                         <span class="btn_txt">Proceed to check Out</span>
                     </button>
 
