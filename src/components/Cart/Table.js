@@ -5,11 +5,9 @@ import axios from 'axios';
 const cartListUrl = "https://edu-groceryapp.herokuapp.com/getOrders";
 const placeOrderUrl = "https://edu-groceryapp.herokuapp.com/saveOrder"
 const Table = (props) => {
-    console.log(props, 'propps')
     const [carts, setCart] = useState([]);
 
     useEffect(() => {
-
         // sessionStorage.removeItem('totalUnits')
         // sessionStorage.removeItem('totalCost')
         // sessionStorage.removeItem('active_pid')
@@ -50,9 +48,8 @@ const Table = (props) => {
 
     }
     const decrease = (pid, qty) => {
-        console.log(qty, 'actty1')
-        if (qty > 1) {
 
+        if (qty > 1) {
 
             setCart(carts =>
                 carts.map((i) =>
@@ -71,13 +68,11 @@ const Table = (props) => {
                 .then((reponse) => {
 
                 })
-
-            console.log(prodObj, 'final asc qty')
         } else if (qty == 1) {
-            console.log(qty, 'qty1')
+
             axios.delete(`https://edu-groceryapp.herokuapp.com/deleteOrder/${pid}`)
                 .then((reponse) => {
-                    console.log(reponse, 'deleted');
+
                     document.getElementById(pid).remove();
                     setCart(carts =>
                         carts.map((i) =>
@@ -98,7 +93,7 @@ const Table = (props) => {
                     // history.push('/cart')
                 })
         }
-        console.log(qty, 'final desc qty')
+
     }
 
 
@@ -112,17 +107,8 @@ const Table = (props) => {
         sessionStorage.setItem('totalCostddddd', 1000);
 
     })
-    // const placeOrder = () => {
-    //     let orderId = Math.floor(Math.random() * 10000)
-    //     console.log(orderId, 'orderId')
-    //     let dd2 = {
-    //         orderid: orderId,
-    //         items: carts,
-    //         totalCost: totalCost,
-    //         totalUnits: totalUnits
-    //     };
-    //     props.check(dd2);
-    // }
+        ;
+
     const placeOrder = () => {
         let orderId = Math.floor(Math.random() * 10000)
         const pids = sessionStorage.getItem('active_pid').split(',');
@@ -154,13 +140,15 @@ const Table = (props) => {
                 sessionStorage.setItem('totalCostddddd', 2000);
 
                 pids.map((i) => {
-
+                    console.log('inn p update', i)
                     axios.put("https://edu-groceryapp.herokuapp.com/updateItemStatus", {
                         "product_id": i
                         , "order_id": orderId
                     })
                         .then((reponse) => {
-
+                            setTimeout(function () {
+                                console.log('after update', i)
+                            }, 2000);
                             console.log('going for payment', i, 'res', reponse)
                         })
                 })

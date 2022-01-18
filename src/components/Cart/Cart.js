@@ -19,12 +19,10 @@ class Cart extends Component {
             totalUnits: 0
         }
 
-        // console.log(sessionStorage.getItem('totalCost'), 'totalCost')
-
-        // console.log(sessionStorage.getItem('totalUnits'), 'totalUnits')
+       
     }
 
-    placeOrder = () => {
+    placeOrder2 = () => {
 
         const pids = sessionStorage.getItem('active_pid').split(',');
 
@@ -85,9 +83,7 @@ class Cart extends Component {
                     {/* http://localhost:4100/paynow */}
                     {/* action="https://edu-payment.herokuapp.com/paynow" method="POST" */}
                     <form action="https://edu-payment.herokuapp.com/paynow"  method="POST">
-                    <Table cart={this.state.carts} check={(datacheck) => { this.checkConn(datacheck) }} />
-                   
-                   
+                    <Table cart={this.state.carts} check={(datacheck) => { this.checkConn(datacheck) }} />                                      
                     <input type="hidden" name="amount" value={this.state.totalCost} />
                     <input type="hidden" name="id" value={this.state.orderid} />
                     <input type="hidden" name="hotel_name" value="grocerypayments" />
@@ -107,7 +103,7 @@ class Cart extends Component {
         // sessionStorage.removeItem('totalCost')
         // sessionStorage.removeItem('active_pid')
         console.log('here', sessionStorage.getItem('totalCost'))
-        // console.log(sessionStorage.getItem('totalUnits'), 'totalUnits');
+       
         this.setState({ totalCost: sessionStorage.getItem('totalCost') })
         this.setState({ totalUnits: sessionStorage.getItem('totalUnits') })
         axios.get(cartListUrl)
