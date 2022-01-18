@@ -87,7 +87,7 @@ class Cart extends Component {
                     {/* action="https://edu-payment.herokuapp.com/paynow" method="POST" */}
                     {/* check={(datacheck) => { this.checkConn(datacheck) }} */}
 
-                    <form action="http://localhost:4100/paynow" method="POST">
+                    <form action="https://edu-payment.herokuapp.com/paynow" method="POST">
                         <Table cart={this.state.carts} check={(datacheck) => { this.checkConn(datacheck) }} />
                         <input type="hidden" name="amount" value={this.state.totalCost} />
                         <input type="hidden" name="id" value={this.state.orderid} />
