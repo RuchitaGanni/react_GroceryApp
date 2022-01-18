@@ -1,0 +1,75 @@
+#formBck{
+    /* background-color:green; */
+    height:100%;
+    /* margin-top: 10%; */
+    text-align: center;
+
+    
+}
+
+.bg-img {
+    /* The image used */
+    /* background-image: url("../images/bck_vg.jpg"); */
+  
+    min-height: 600px;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Needed to position the navbar */
+    position: relative;
+  }
+#loginHd{
+    font-size:30px;
+    font-family: Arial, sans-serif;
+    color: #84c225;
+    
+}
+
+
+.glyphicon-eye-open{
+	margin-top: 33px;
+    margin-left: -49px;
+}
+.thumbnail{
+    width: 30%;
+    float: left;
+    height:auto;
+    margin-top:40px;
+    margin-left:25%;
+   /* background-color: rgb(217, 241, 206); */
+}
+#emailInp,#pswdInp{
+    width:100%;
+}
+#passwordGrp{
+    display: inline-block;
+    width:100%;
+}
+#pswdInp,#viewPswd{
+    float: left;
+}
+#buttonsDiv{
+    text-align: center;
+}
+.space{
+    margin-left:5%;
+    font-size:20px;
+    background-color:#84c225 !important;
+}
+.errorMsg{
+    font-size:20px;
+}
+#alert{
+    width:80%;
+    margin-bottom:8px;
+}
+@media screen and (max-width:800px){
+    .thumbnail{
+        float:none;
+        width: 80%;
+        margin-left:10%;
+    }
+}

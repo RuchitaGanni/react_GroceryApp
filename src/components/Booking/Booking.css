@@ -1,0 +1,26 @@
+/* .tr{
+    background-color:#555;
+} */
+.fa-money,.fa-check{
+    color:darkgreen;
+    font-size:20px !important;
+    text-align:center !important;
+}
+.LoaderGI2{
+    height:500px;
+    width:500px;
+    margin-left:140px !important;
+    margin-top: 100px;
+   
+}
+#bookingsTh>tr>th{
+    text-align:center !important;
+   
+}
+
+#bookingsTr>td {
+    text-align:center;
+    font-family: Helvetica, sans-serif;
+    font-weight: 600;
+    color:grey
+}

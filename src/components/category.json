@@ -1,0 +1,52 @@
+[
+  {
+    "category_name": "Fruits",
+    "category_image":"/images/apples.jpg",
+    "id": 1
+  },
+  {
+    "category_name": "Vegetables",
+    "category_image":"/images/veggie.jpg",
+    "id": 2
+  },
+  {
+    "category_name": "Oils",
+    "category_image":"/images/oils.jpg",
+    "id": 3
+  },
+  {
+    "category_name": "Bakery",
+    "category_image":"/images/bakery.jpg",
+    "id": 4
+  },
+  {
+    "category_name": "Pulses",
+    "category_image":"/images/pulses.jpg",
+    "id": 5
+  },
+  {
+    "category_name": "Meat",
+    "category_image":"/images/meat.jpg",
+    "id": 6
+  },
+  {
+    "category_name": "Snacks",
+    "category_image":"/images/snacks.jpg",
+    "id": 7
+  },
+  {
+    "category_name": "Beverages",
+    "category_image":"/images/Beverages.jpg",
+    "id": 8
+  },
+  {
+    "category_name": "Cleaning & Household",
+    "category_image":"/images/cleaning.jpg",
+    "id": 9
+  },
+  {
+    "category_name": "Rice",
+    "category_image":"/images/rice.jpg",
+    "id": 10
+  }
+]

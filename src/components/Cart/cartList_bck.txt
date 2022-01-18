@@ -1,0 +1,77 @@
+import axios from 'axios';
+import { useState } from 'react'
+const productUrl = "https://edu-groceryapp.herokuapp.com/products?category_id";
+
+const CartList = (props) => {
+
+    // let z = props.cartItems;
+    // const [y=z, setCart] = useState([]);
+    let counter = 0;
+    const increase = (counterInc, pid) => {
+
+        props.cartItems.map((i) => {
+            if (i.product_id === pid) {
+                console.log("here",i)
+                i.quantity++;
+                
+                counter=i.quantity;
+                console.log("here",i.quantity,counter)
+            }
+            
+            // props.cartItems.i.quantity;
+        })
+        return counter;
+
+
+    }
+    const decrease = (counterDec, pid) => {
+        if (counterDec >= 0) {
+            if (props.cartItems.product_id === pid) {
+                counter = counterDec - 1;
+            }
+
+        }
+    }
+    const renderMeal = ({ cartItems }) => {
+        if (cartItems.length >= 1) {
+            return cartItems.map((item) => {
+                return (<li className="cartList" key={item.product_id}>
+                    <div className="cartItems">
+                        <div className="cartDivs">
+                            <img src={item.image} alt={item.product_name} className="cartImage" />
+                        </div>
+                        <div className="cartDivs">
+                            <div className="cartItemDesc">
+
+                                <span className="cartItemDesc">{item.product_name}</span>
+                                <br />
+                                <span class="cartItemMrp">&#8377; {item.product_price}.00</span>
+                                <br />
+                                <span className="shchead_txt"></span>
+
+                            </div>
+                            <div className="parts2">
+                                <button onClick={(counterInc, pid) => { decrease(item.quantity, item.product_id) }}><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                <span className="counter">{counter}</span>
+                                <button onClick={(counterDec, pid) => { increase(item.quantity, item.product_id) }}><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>)
+            })
+
+            //finalRen(dd);
+        }
+    }
+
+
+    return (
+        <ul>{renderMeal(props)}</ul>
+        // <ul>{renderMeal(props)} </ul>
+
+
+    )
+
+}
+export default CartList;

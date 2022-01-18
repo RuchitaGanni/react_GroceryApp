@@ -1,0 +1,60 @@
+[
+
+ 
+ 
+  {
+    "product_id": 37,
+    "product_name": "Green Capsicum 500 g",
+    "product_description": "Green Capsicum 500 g",
+    "product_image":"/images/veggies/capsicum.jpg",
+    "price": 39.00,
+    "category_name": "Vegetables",
+    "category_id": 2,
+    "qty":0
+    
+  },
+  {
+    "product_id": 38,
+    "product_name": "Carrot Red per kg",
+    "product_description": "Carrot Red per kg",
+    "product_image":"/images/veggies/carrot.jpg",
+    "price": 49.00,
+    "category_name": "Vegetables",
+    "category_id": 2,
+    "qty":0
+    
+  },
+  {
+    "product_id": 36,
+    "product_name": "Fresho Signature Muffin/Cup Cake - Choco Chip, 200 g",
+    "product_description": "Fresho Signature Muffin/Cup Cake - Choco Chip, 200 g (Pack of 4)",
+    "product_image":"/images/veggies/muffin.jpg",
+    "price": 152.00,
+    "category_name": "Vegetables",
+    "category_id": 2,
+    "qty":0
+    
+  },
+  {
+    "product_id": 30,
+    "product_name": "Kiwi Imported Economy per Piece (Approx 70 g - 110 g)",
+    "product_description": "Kiwi Imported Economy per Piece (Approx 70 g - 110 g)",
+    "product_image":"/images/veggies/kiwi.jpg",
+    "price": 25.00,
+    "category_name": "Vegetables",
+    "category_id": 2,
+    "qty":0
+    
+  },
+  {
+    "product_id": 31,
+    "product_name": "Kinoo Orange 1 kg",
+    "product_description": "Kinoo Orange 1 kg",
+    "product_image":"/images/veggies/orange.jpg",
+    "price": 75.00,
+    "category_name": "Vegetables",
+    "category_id": 2,
+    "qty":0
+    
+  }
+]
