@@ -1,6 +1,10 @@
 /* .tr{
     background-color:#555;
 } */
+
+.container{
+    margin-top: 30px;
+}
 .fa-money,.fa-check{
     color:darkgreen;
     font-size:20px !important;

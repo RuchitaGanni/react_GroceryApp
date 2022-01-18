@@ -16,7 +16,7 @@ class Booking extends Component {
         return (
             <Fragment>
                 <Header />
-                <div className="container">
+                <div className="container" >
                     <table className="table table-hover">
                         <thead className="thead-dark" id="bookingsTh">
                             <tr >
@@ -45,7 +45,7 @@ class Booking extends Component {
             if (qparams) {
                 var data = {
                     "status": qparams.split('?')[1].split('&')[0].split('=')[1],
-                    "date": qparams.split('&')[2].split('=')[1].replace('%',' '),
+                    "date": qparams.split('&')[2].split('=')[1].replace('%20',' '),
                     "bank_status": qparams.split('&')[0].split('=')[1],
                     "bank": qparams.split('&')[3].split('=')[1]
 
