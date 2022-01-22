@@ -5,7 +5,7 @@ import Alert from '@mui/material/Alert';
 import IconButton from '@mui/material/IconButton';
 import './signup.css'
 import bck_vg from '../../../src/veggie2.jpg';
-const registerUrl = "http://localhost:5000/api/auth/register"
+const registerUrl = "https://edu-login-app.herokuapp.com/api/auth/register"
 class Signup extends Component {
     constructor(props) {
         super(props)

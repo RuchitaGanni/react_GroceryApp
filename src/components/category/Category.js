@@ -68,7 +68,7 @@ const Category = (props) => {
         renderProduct =
             props.cats.map((item) => {
                 return (
-                    <Link to={`/product?category_id=${item.id}`} key={item.id} >
+                    <Link to={`/prodByCat/${item.id}`} key={item.id} >
                         <div className="card">
                             <img src={item.category_image} alt={item.category_name} className="cardImage" />
 

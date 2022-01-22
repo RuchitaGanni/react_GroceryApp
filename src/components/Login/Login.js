@@ -4,7 +4,7 @@ import Alert from '@mui/material/Alert';
 import IconButton from '@mui/material/IconButton';
 import './login.css'
 import bck_vg from '../../../src/veggie2.jpg';
-const loginUrl = "http://localhost:5000/api/auth/login";
+const loginUrl = "https://edu-login-app.herokuapp.com/api/auth/login";
 
 class Login extends Component {
     constructor(props) {

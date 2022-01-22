@@ -6,7 +6,7 @@ import MainBody from '../MainBody/MainBody';
 
 import Badge from '@mui/material/Badge';
 import { withRouter } from 'react-router-dom';
-const userInfoUrl = "http://localhost:5000/api/auth/userInfo"
+const userInfoUrl = "https://edu-login-app.herokuapp.com/api/auth/userInfo"
 class Header extends Component {
 
     constructor(props) {
