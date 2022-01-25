@@ -110,7 +110,7 @@ class Signup extends Component {
                                     </div>
 
                                     <div id="viewPswd">
-                                        <span className="glyphicon glyphicon-eye-open" onclick="show(1);"></span>
+                                        <span className="glyphicon glyphicon-eye-open" onClick="show(1);"></span>
                                     </div>
                                 </div>
                                 <div id="buttonsDiv">
