@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import Button from '@mui/material/Button';
 import axios from 'axios';
 const cartListUrl = "https://edu-groceryapp.herokuapp.com/getOrders";
 const placeOrderUrl = "https://edu-groceryapp.herokuapp.com/saveOrder"
@@ -118,7 +118,7 @@ const Table = (props) => {
                 items: carts,
                 totalCost: totalCost,
                 totalUnits: totalUnits,
-                orderType:"grocery",
+                orderType: "grocery",
                 email: sessionStorage.getItem('userEmail')
             };
             props.check(dd);
@@ -133,7 +133,7 @@ const Table = (props) => {
                     items: carts,
                     totalCost: totalCost,
                     totalUnits: totalUnits,
-                    orderType:"grocery",
+                    orderType: "grocery",
                     email: sessionStorage.getItem('userEmail')
                 })
             })
@@ -187,10 +187,23 @@ const Table = (props) => {
                                 <td>{item.product_name}</td>
                                 <td>
                                     <div className="parts2">
-                                        <button className="btn" onClick={(pid, qty) => decrease(item.product_id, item.quantity)} id="minusIcon" type="button"><i class="fa fa-minus" aria-hidden="true" style={{ color: "red" }}></i></button>
+                                        <Button variant="outlined" size="samll" color="error" onClick={(pid, qty) => decrease(item.product_id, item.quantity)} id="minusIcon">
+                                            <i class="fa fa-minus fa-2x" aria-hidden="true" style={{ color: "red" }}>
+                                            </i>
+                                        </Button>
+                                        {/* <button className="btn" onClick={(pid, qty) => decrease(item.product_id, item.quantity)} id="minusIcon" type="button">
+                                            <i class="fa fa-minus" aria-hidden="true" style={{ color: "red" }}>
+                                            </i>
+                                        </button> */}
 
                                         <span className="counter">{item.quantity}</span>
-                                        <button className="btn" onClick={(pid, qty) => increase(item.product_id, item.quantity)} id="plusIcon" type="button"><i class="fa fa-plus" aria-hidden="true" style={{ color: "green" }}></i></button>
+                                        <Button variant="outlined" size="samll" color="success" onClick={(pid, qty) => increase(item.product_id, item.quantity)} id="plusIcon">
+                                            <i class="fa fa-plus fa-2x" aria-hidden="true" style={{ color: "green" }}></i>
+
+                                        </Button>
+                                        {/* <button className="btn" onClick={(pid, qty) => increase(item.product_id, item.quantity)} id="plusIcon" type="button">
+                                            <i class="fa fa-plus" aria-hidden="true" style={{ color: "green" }}></i>
+                                        </button> */}
 
                                     </div>
                                 </td>
@@ -216,7 +229,9 @@ const Table = (props) => {
                 </table>
                 <div className="checkOutDiv">
 
-
+                    {/* <Button variant="contained" size="large" color="success" onClick={placeOrder}>
+                        Proceed to check Out
+                    </Button> */}
                     <button id="checkOut" className="btn btn-primary pull-right" onClick={placeOrder}  >
                         <span class="btn_txt">Proceed to check Out</span>
                     </button>

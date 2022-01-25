@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import './login.css'
 import bck_vg from '../../../src/veggie2.jpg';
@@ -58,6 +59,9 @@ class Login extends Component {
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
     }
+    skip = () => {
+        this.props.history.push('/')
+    }
     render() {
         return (
             <Fragment>
@@ -108,14 +112,15 @@ class Login extends Component {
                                         <input type="Password" name="password" id="password" class="form-control" value={this.state.password} onChange={this.handleChange} required />
                                     </div>
 
-                                    <div id="viewPswd">
+                                    {/* <div id="viewPswd">
                                         <span className="glyphicon glyphicon-eye-open" onClick="show(1);"></span>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div id="buttonsDiv">
                                     <button className="btn btn-success space" onClick={this.handleSubmit} >Login</button>
-                                    <button className="btn btn-success space" onClick={this.handleSignUp} >Sign Up</button>
+                                    <button className="btn btn-success space" onClick={this.handleSignUp} >SignUp</button>
                                 </div>
+                                <center className="skipBtn"> <Button variant="outlined" size="large" color="info" onClick={this.skip}>Skip SignUp & go to Home</Button></center>
 
                             </div>
                         </div>

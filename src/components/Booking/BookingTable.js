@@ -13,7 +13,7 @@ const BookingTable = (props) => {
                     return (
                         <tr id="bookingsTr">
                             <td>
-
+                                {item.orderId}
                             </td>
                             <td>
                                 {item.date}
@@ -21,11 +21,8 @@ const BookingTable = (props) => {
                             <td>
                                 &#8377;  {item.totalCost}
                             </td>
-                            <td style={{ color: "green" }}>
-                                <i class="fab fa-cc-visa fa-2x"></i>
-                                {item.bank_status}
-                                <br />
-                                <i class="fas fa-shipping-fast"></i> Out for delivery
+                            <td >
+                                <i class="fas fa-shipping-fast"></i> {item.status}
 
                             </td>
                             <td>

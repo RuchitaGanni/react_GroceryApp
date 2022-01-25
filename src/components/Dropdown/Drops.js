@@ -29,8 +29,6 @@ class Drops extends React.Component {
         let mealId = this.props.cc;
         axios.get(`https://edu-groceryapp.herokuapp.com/getProducts/${mealId}`)
             .then((res) => {
-                console.log(res.data);
-
                 this.setState({ prodcuts: res.data })
             })
     }

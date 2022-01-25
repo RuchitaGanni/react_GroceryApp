@@ -44,7 +44,6 @@ class MainBody extends Component {
     componentDidMount(){
         axios.get(categoryUrl)
         .then((res) => {
-            console.log('one')
             this.setState({categories:res.data})
         })
 

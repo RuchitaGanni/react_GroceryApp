@@ -1,15 +1,25 @@
 import axios from 'axios';
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
 import { useState, useEffect } from 'react'
 const addToCartUrl = "https://edu-groceryapp.herokuapp.com/addToCart"
 const Products = (props) => {
 
     //get cart database
     const [carts, setCart] = useState([]);
-    const [disable, setDisable] = useState('inline');
+    const [disable, setDisable] = useState(false);
+    const [status, showAlert] = useState(false);
     const [prods, setprod] = useState([]);
     // const [value, setValue] = useState();
     useEffect(() => {
 
+        if (sessionStorage.getItem('userEmail') == 'undefined') {
+
+            showAlert(true);
+
+        }else{
+            showAlert(false);
+        }
         axios.get(`https://edu-groceryapp.herokuapp.com/getOrders`)
             .then((res, err) => {
                 if (err) {
@@ -36,88 +46,78 @@ const Products = (props) => {
         })
     }
     const addToCart = (pid, pname, q, price, pimage) => {
-
-        let prodObj = '';
-        let updqty = 0;
-        console.log(mySet1, 'mySet1', typeof mySet1.indexOf(pid))
-        let chcek = mySet1.indexOf(pid);
-        console.log(chcek, 'chcek')
-        if (chcek >= 0) {
-            if (carts.length > 0) {
-                carts.map((item) => {
-                    if (item.product_id === pid) {
-                        //setDisable(true)
-                        if (item.quantity >= 5) {
-
-                            updqty = item.quantity;
-                            console.log('one', updqty)
-                        } else {
-
-                            updqty = item.quantity + 1;
-                            console.log('two', updqty)
-                        }
-
-                    }
-                })
-            } else {
-                console.log('qqqqqqqq', q)
-                updqty = q + 1;
-            }
-
-            // prodObj= {
-            //     product_id: pid,
-            //     product_name: pname,
-            //     product_price: price,
-            //     image: pimage,
-            //     quantity: q,
-            //     status: 0
-            // };
-            console.log(prods, 'prods')
-
-
-
-
-            prodObj = {
-                product_id: pid,
-                quantity: updqty,
-                status: 0
-            };
-
-            console.log('put', q, pid, 'prodObj', prodObj)
-
-            axios.put("https://edu-groceryapp.herokuapp.com/updateStatus", prodObj)
-                .then((reponse) => {
-                    console.log(reponse, 'putttttttt');
-
-                    // window.location.reload(true);
-                })
-
-
+        let email = sessionStorage.getItem('userEmail');
+        if (email == 'undefined') {
+            console.log('in undef')
+            showAlert(true);
+            setDisable(true)
         } else {
-             setDisable('none')
+            console.log('in  not undef')
+            setDisable(false);
+            showAlert(false);
+            // starts adding to cart
+            let prodObj = '';
+            let updqty = 0;
+            let chcek = mySet1.indexOf(pid);
 
-            // mySet1.add(item.product_id);
-            prodObj = {
-                product_id: pid,
-                product_name: pname,
-                product_price: price,
-                image: pimage,
-                quantity: q + 1,
-                status: 0
-            };
-            console.log('post', q, pid, 'prodObj', prodObj)
-            axios.post(addToCartUrl, prodObj)
-                .then((reponse) => {
-                    console.log(reponse, 'posttttttttttt');
-                    mySet1.push(pid);
-                    // window.location.reload(true);
-                })
-            axios.get("https://edu-groceryapp.herokuapp.com/getOrders").then((res) => setCart(res.data))
+            if (chcek >= 0) {
+                if (carts.length > 0) {
+                    carts.map((item) => {
+                        if (item.product_id === pid) {
+                            //setDisable(true)
+                            if (item.quantity >= 5) {
+
+                                updqty = item.quantity;
+                                console.log('one', updqty)
+                            } else {
+
+                                updqty = item.quantity + 1;
+
+                            }
+
+                        }
+                    })
+                } else {
+
+                    updqty = q + 1;
+                }
+                // console.log(prods, 'prods')
+                prodObj = {
+                    product_id: pid,
+                    quantity: updqty,
+                    status: 0
+                };
+                axios.put("https://edu-groceryapp.herokuapp.com/updateStatus", prodObj)
+                    .then((reponse) => {
+                        console.log(reponse, 'putttttttt');
+                    })
+
+
+            } else {
+                // setDisable('none')
+                prodObj = {
+                    product_id: pid,
+                    product_name: pname,
+                    product_price: price,
+                    image: pimage,
+                    quantity: q + 1,
+                    status: 0
+                };
+
+                axios.post(addToCartUrl, prodObj)
+                    .then((reponse) => {
+
+                        mySet1.push(pid);
+
+                    })
+                axios.get("https://edu-groceryapp.herokuapp.com/getOrders").then((res) => setCart(res.data))
+
+
+            }
 
 
         }
 
-      
 
 
     }
@@ -127,8 +127,8 @@ const Products = (props) => {
     const renderMeal = () => {
         if (prods.length >= 1) {
             return prods.map((item) => {
-                return (<div  id="product_card" key={item.product_id}>
-                    <img src={item.product_image} alt={item.product_name}  id="product_image" />
+                return (<div id="product_card" key={item.product_id}>
+                    <img src={item.product_image} alt={item.product_name} id="product_image" />
 
                     <div className="caption_div">
                         <center>
@@ -143,7 +143,8 @@ const Products = (props) => {
                     <div class="cart_div">
                         <center>
                             {/* disabled={disable}  style={{display: disable}}*/}
-                            <button class="btn btn-primary" id="cart_btn"   onClick={(pid, pname, q, price, pimage) => { addToCart(item.product_id, item.product_name, item.qty, item.price, item.product_image) }}>
+                            <button class="btn btn-primary" id="cart_btn" onClick={(pid, pname, q, price, pimage) => { addToCart(item.product_id, item.product_name, item.qty, item.price, item.product_image) }}
+                                disabled={disable}>
                                 <span>Add to </span>
                                 <span class="fa fa-shopping-basket"></span>
                             </button>
@@ -171,6 +172,30 @@ const Products = (props) => {
     }
     return (
         <div class="mainTileContainer">
+            <div className="alertDivProds">
+                {status &&
+                    <Alert variant="filled" severity="warning" id="alert"
+
+                        action={
+                            <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                    showAlert(false)
+                                    //   setOpen(false);
+                                }}
+                            >
+                                <i class="fa fa-times" style={{ color: 'black' }}></i>
+                            </IconButton>
+                        }
+
+                    >
+                        <span className="errorMsg">Please login to add items to cart</span>
+                    </Alert>
+
+                }
+            </div>
             {renderMeal(props)}
         </div>
 

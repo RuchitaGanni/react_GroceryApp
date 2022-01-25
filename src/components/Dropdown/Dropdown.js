@@ -8,8 +8,6 @@ import axios from 'axios'
 const categoryUrl = "https://edu-groceryapp.herokuapp.com/category";
 
 const Dropdown = (props) => {
-    console.log(props)
-
     let makeDrops =
 
         props.cats.map((i) => {
@@ -19,10 +17,6 @@ const Dropdown = (props) => {
                     <div className="dropdown-content">
 
                         <Drops cc={i.id} />
-
-                        {/* <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a> */}
                     </div>
 
 

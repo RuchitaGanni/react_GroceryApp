@@ -109,15 +109,15 @@ class Signup extends Component {
                                         <input type="Password" name="password" id="password" class="form-control" value={this.state.password} onChange={this.handleChange} required />
                                     </div>
 
-                                    <div id="viewPswd">
+                                    {/* <div id="viewPswd">
                                         <span className="glyphicon glyphicon-eye-open" onClick="show(1);"></span>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div id="buttonsDiv">
                                     {/* <Button  variant="text" size="large" color="success" onClick={this.handleSignUp}>SignUp</Button> */}
                                     <button className="btn btn-success space" onClick={this.handleSignUp} >SignUp</button>
                                 </div>
-                                <center> <Button variant="text" size="large" color="info" onClick={this.skip}>Skip SignUp & go to Home</Button></center>
+                                <center className="skipBtn"> <Button variant="outlined" size="large" color="info" onClick={this.skip}>Skip SignUp & go to Home</Button></center>
 
                             </div>
                         </div>
