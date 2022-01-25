@@ -38,15 +38,15 @@ class Booking extends Component {
         )
     }
     componentDidMount() {
-        console.log('innn')
+        let email = sessionStorage.getItem('userEmail');
         if (this.props.location) {
             var qparams = this.props.location.search;
 
             if (qparams) {
                 var orderId = qparams.split('&')[1].split('=')[1].split('_')[1];
                 if (qparams.split('?')[1].split('&')[0].split('=')[1] === "TXN_FAILURE") {
-                     axios.delete(`https://edu-groceryapp.herokuapp.com/deleteOneOrder/${orderId}`)
-                     .then((reponse) => {console.log(reponse,'reponse after delete')})
+                    axios.delete(`https://edu-groceryapp.herokuapp.com/deleteOneOrder/${orderId}`)
+                        .then((reponse) => { console.log(reponse, 'reponse after delete') })
                 } else {
                     var data = {
                         "status": qparams.split('?')[1].split('&')[0].split('=')[1],
@@ -55,7 +55,7 @@ class Booking extends Component {
                         "bank": qparams.split('&')[3].split('=')[1]
 
                     }
-                   
+
 
                     fetch(`${orderStatusUpdate}${orderId}`, {
                         method: 'PUT',
@@ -78,7 +78,10 @@ class Booking extends Component {
             }
 
         }
-        axios.get(getFinalOrdersurl).then((res) => { this.setState({ orders: res.data }) })
+        axios.get(`${getFinalOrdersurl}/${email}`)
+            .then((res) => {
+                this.setState({ orders: res.data })
+            })
     }
 }
 export default Booking;

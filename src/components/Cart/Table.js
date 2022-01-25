@@ -118,6 +118,7 @@ const Table = (props) => {
                 items: carts,
                 totalCost: totalCost,
                 totalUnits: totalUnits,
+                orderType:"grocery",
                 email: sessionStorage.getItem('userEmail')
             };
             props.check(dd);
@@ -132,6 +133,7 @@ const Table = (props) => {
                     items: carts,
                     totalCost: totalCost,
                     totalUnits: totalUnits,
+                    orderType:"grocery",
                     email: sessionStorage.getItem('userEmail')
                 })
             })
