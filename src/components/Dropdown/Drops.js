@@ -16,7 +16,7 @@ class Drops extends React.Component {
             this.state.prodcuts.map((i) => {
                 return (
                     <>
-                        <Link to={`/product/${i.product_id}`} >{i.product_name}</Link>
+                        <Link to={`/product/${i.product_id}`}  className="drop-down-items">{i.product_name}</Link>
  
                         {/* <Link to={`/product?category_id=${this.props.cc}`} >{i.product_name}</Link> */}
                     </>

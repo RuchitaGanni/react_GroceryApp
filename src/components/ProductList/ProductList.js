@@ -1,18 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
+import Dropdown from '../Dropdown/Dropdown'
 import './ProductList.css';
 import Products from './Products'
 import axios from 'axios';
 // const productUrl="https://edu-groceryapp.herokuapp.com/products?category_id";
 const productUrl = "https://edu-groceryapp.herokuapp.com/products";
-const getprodsByCat = "https://edu-groceryapp.herokuapp.com/getProducts"
+const getprodsByCat = "https://edu-groceryapp.herokuapp.com/getProducts";
+const categoryUrl="https://edu-groceryapp.herokuapp.com/category";
 class ProductList extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             counter: 0,
+           
             products: '',
             product_category_name: '',
             product_category_id: '',
@@ -38,11 +41,7 @@ class ProductList extends Component {
             <Fragment>
                 <Header />
                 <div className="container" id="main-body-container" style={{ marginTop: "40px" }}>
-                    {/* <ol class="breadcrumb">
-                        <li></li>
-
-                        <li > </li>
-                    </ol> */}
+                   
                     <Link to='/'><span class="label label-default bdcrm">Home</span></Link>
                     <span class=" bdcrm"><i class="fas fa-chevron-right"></i></span>
                     <Link to={`/prodByCat/${this.state.product_category_id}`}>

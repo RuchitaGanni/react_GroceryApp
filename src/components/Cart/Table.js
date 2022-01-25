@@ -8,9 +8,7 @@ const Table = (props) => {
     const [carts, setCart] = useState([]);
 
     useEffect(() => {
-        // sessionStorage.removeItem('totalUnits')
-        // sessionStorage.removeItem('totalCost')
-        // sessionStorage.removeItem('active_pid')
+
         axios.get("https://edu-groceryapp.herokuapp.com/getOrders")
             .then((res) => {
                 if (res.data.length >= 1) {
@@ -110,53 +108,53 @@ const Table = (props) => {
         ;
 
     const placeOrder = () => {
-        console.log('heyyy')
-        let orderId = Math.floor(Math.random() * 10000)
-        const pids = sessionStorage.getItem('active_pid').split(',');
-        let dd = {
-            orderid: orderId,
-            items: carts,
-            totalCost: totalCost,
-            totalUnits: totalUnits
-        };
-        props.check(dd);
+        if (sessionStorage.getItem('userEmail') == 'undefined') {
 
-        fetch(placeOrderUrl, {
-            method: 'POST',
-            headers: {
-                'accept': 'application/json',
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                orderId: orderId,
+        } else {
+            let orderId = Math.floor(Math.random() * 10000)
+            const pids = sessionStorage.getItem('active_pid').split(',');
+            let dd = {
+                orderid: orderId,
                 items: carts,
                 totalCost: totalCost,
-                totalUnits: totalUnits
-            })
-        })
-            //.then(this.props.history.push('/viewBooking'))
-            .then((res) => {
-                sessionStorage.setItem('totalUnits', 0)
-                sessionStorage.setItem('totalCost', 0)
-                sessionStorage.setItem('totalCostddddd', 2000);
-
-                pids.map((i) => {
-                    console.log('inn p update', i)
-                    axios.put("https://edu-groceryapp.herokuapp.com/updateItemStatus", {
-                        "product_id": i
-                        , "order_id": orderId
-                    })
-                        .then((reponse) => {
-                            // setTimeout(function () {
-                            //     console.log('after update', i)
-                            // }, 200000);
-                            console.log('going for payment', i, 'res', reponse)
-                        })
+                totalUnits: totalUnits,
+                email: sessionStorage.getItem('userEmail')
+            };
+            props.check(dd);
+            fetch(placeOrderUrl, {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    orderId: orderId,
+                    items: carts,
+                    totalCost: totalCost,
+                    totalUnits: totalUnits,
+                    email: sessionStorage.getItem('userEmail')
                 })
-
-
             })
-        // console.log('going for payment'))
+                //.then(this.props.history.push('/viewBooking'))
+                .then((res) => {
+                    sessionStorage.setItem('totalUnits', 0)
+                    sessionStorage.setItem('totalCost', 0)
+                    sessionStorage.setItem('totalCostddddd', '0');
+
+                    pids.map((i) => {
+                        axios.put("https://edu-groceryapp.herokuapp.com/updateItemStatus", {
+                            "product_id": i
+                            , "order_id": orderId
+                        })
+                            .then((reponse) => {
+                                // console.log('going for payment', i, 'res', reponse)
+                            })
+                    })
+
+
+                })
+        }
+
     }
 
 

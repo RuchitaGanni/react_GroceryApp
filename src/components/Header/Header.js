@@ -19,18 +19,9 @@ class Header extends Component {
         }
     }
 
-    // cartFunc = () => {
-    //     console.log('caaled')
-    //     axios.get("https://edu-groceryapp.herokuapp.com/getOrders")
-    //         .then((res) => {
-    //             if (res.data.length >= 1) {
-    //                 this.setState({ cartCount: res.data.length })
-
-    //             }
-    //         })
-    // }
+   
     conditionlHeader = () => {
-        console.log(this.state.userdata, 'this.state.userdata')
+       
         let data = this.state.userdata;
         let outputArray = [data.username, data.email, data.phone, data.role]
         localStorage.setItem('userdata', outputArray)
@@ -74,7 +65,7 @@ class Header extends Component {
                             <ul className="nav navbar-nav">
                                 <li ><Link exact to="/" className="links">Home</Link></li>
                                
-                                <li><Link exact to="/cart" className="links"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span className="cartCount">{this.state.cartCount}</span></Link></li>
+                                <li><Link exact to="/cart" className="links"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span className="cartCount"></span></Link></li>
                                 <li ><Link exact to="/viewBooking" className="links">Orders</Link></li>
                                 {/* <li id="userinfo"><Link exact to="/" className="links"><i class="fa fa-user" aria-hidden="true"></i>  Hello..!! Ruchita</Link></li> */}
 
@@ -110,6 +101,7 @@ class Header extends Component {
 
                 })
                 this.setState({ userinfo: data.username })
+                sessionStorage.setItem('userEmail', data.email);
             })
     }
     // async componentDidMount() {

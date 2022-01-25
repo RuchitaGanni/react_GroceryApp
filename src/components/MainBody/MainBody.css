@@ -28,7 +28,7 @@
    outline: none;
 }
 .dropback{
-    background-color: grey;
+    background-color: #dddddd;
 }
 @media screen and (max-width: 800px) {
     .seacrhInput{

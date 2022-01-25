@@ -93,6 +93,7 @@ const Category = (props) => {
                     <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
 
 
@@ -105,6 +106,9 @@ const Category = (props) => {
                         <img src="/images/fruits.jpg" alt="Fruits" className="carousel-images" />
                     </div>
 
+                    <div className="item">
+                        <img src="/images/dryfruits.jpg" alt="Dry Fruits" className="carousel-images" />
+                    </div>
                     <div className="item">
                         <img src="/images/bakery.jpg" alt="Bread" className="carousel-images" />
                     </div>

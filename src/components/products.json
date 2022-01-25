@@ -1,60 +1,52 @@
 [
-
- 
- 
   {
-    "product_id": 37,
-    "product_name": "Green Capsicum 500 g",
-    "product_description": "Green Capsicum 500 g",
-    "product_image":"/images/veggies/capsicum.jpg",
-    "price": 39.00,
+    "product_id": 60,
+    "product_name": "Cauliflower, 1 pc (approx. 400 to 600 g)",
+    "product_description": "Cauliflower, 1 pc (approx. 400 to 600 g)",
+    "product_image": "/images/veggies/cauliflower.jpg",
+    "price": 18.0,
     "category_name": "Vegetables",
     "category_id": 2,
-    "qty":0
-    
+    "qty": 0
   },
   {
-    "product_id": 38,
-    "product_name": "Carrot Red per kg",
-    "product_description": "Carrot Red per kg",
-    "product_image":"/images/veggies/carrot.jpg",
-    "price": 49.00,
+    "product_id": 61,
+    "product_name": "Cabbage, 1 kg",
+    "product_description": "Cabbage, 1 kg",
+    "product_image": "/images/veggies/cabbage.jpg",
+    "price": 30.0,
     "category_name": "Vegetables",
     "category_id": 2,
-    "qty":0
-    
+    "qty": 0
   },
   {
-    "product_id": 36,
-    "product_name": "Fresho Signature Muffin/Cup Cake - Choco Chip, 200 g",
-    "product_description": "Fresho Signature Muffin/Cup Cake - Choco Chip, 200 g (Pack of 4)",
-    "product_image":"/images/veggies/muffin.jpg",
-    "price": 152.00,
+    "product_id": 56,
+    "product_name": "Tomato 1 kg",
+    "product_description": "Tomato 1 kg",
+    "product_image": "/images/veggies/tomato.jpg",
+    "price": 26.0,
     "category_name": "Vegetables",
     "category_id": 2,
-    "qty":0
-    
+    "qty": 0
   },
   {
-    "product_id": 30,
-    "product_name": "Kiwi Imported Economy per Piece (Approx 70 g - 110 g)",
-    "product_description": "Kiwi Imported Economy per Piece (Approx 70 g - 110 g)",
-    "product_image":"/images/veggies/kiwi.jpg",
-    "price": 25.00,
+    "product_id": 55,
+    "product_name": "Broccoli 200 g",
+    "product_description": "Broccoli 200 g",
+    "product_image": "/images/veggies/brocolo.jpg",
+    "price": 36.0,
     "category_name": "Vegetables",
     "category_id": 2,
-    "qty":0
-    
+    "qty": 0
   },
   {
-    "product_id": 31,
-    "product_name": "Kinoo Orange 1 kg",
-    "product_description": "Kinoo Orange 1 kg",
-    "product_image":"/images/veggies/orange.jpg",
-    "price": 75.00,
+    "product_id": 54,
+    "product_name": "Fresh Coriander Leaves, 100 g",
+    "product_description": "Fresh Coriander Leaves, 100 g",
+    "product_image": "/images/veggies/coriander.jpg",
+    "price": 10.0,
     "category_name": "Vegetables",
     "category_id": 2,
-    "qty":0
-    
+    "qty": 0
   }
 ]

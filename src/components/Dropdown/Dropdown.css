@@ -3,12 +3,13 @@
 }
 
 .dropbtn {
-    background-color: grey;
-    color: white;
-    padding: 10px;
-    font-size: 15px;
+    background-color: #dddddd;
+    color: #465c40;
+    padding: 8px;
+    font-size: 17px;
+    font-weight: bold;
     border: none;
-    font-family: Helvetica, sans-serif;
+    font-family: Trebuchet MS, sans-serif;
   }
   
   .dropdown {
@@ -33,9 +34,15 @@
     text-decoration: none;
     display: block;
   }
+  .drop-down-items{
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Trebuchet MS, sans-serif;
+  }
   
   .dropdown-content {background-color: #ddd;}
   
   .dropdown:hover .dropdown-content {display: block;}
   
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  .dropdown:hover .dropbtn {background-color: #84c225;}

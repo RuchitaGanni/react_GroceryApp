@@ -42,7 +42,6 @@ class Cart extends Component {
                 sessionStorage.setItem('totalUnits', 0)
                 sessionStorage.setItem('totalCost', 0)
                 sessionStorage.setItem('totalCostddddd', 2000);
-                // async function x() {
                 pids.map((i) => {
 
                     axios.put("https://edu-groceryapp.herokuapp.com/updateItemStatus", {
@@ -69,10 +68,6 @@ class Cart extends Component {
         this.setState({ totalCost: data.totalCost })
         this.setState({ orderid: data.orderid })
     }
-
-
-
-
     render() {
         return (
             <Fragment>

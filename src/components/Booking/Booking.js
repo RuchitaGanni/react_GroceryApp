@@ -43,35 +43,40 @@ class Booking extends Component {
             var qparams = this.props.location.search;
 
             if (qparams) {
-                var data = {
-                    "status": qparams.split('?')[1].split('&')[0].split('=')[1],
-                    "date": qparams.split('&')[2].split('=')[1].replace('%20',' '),
-                    "bank_status": qparams.split('&')[0].split('=')[1],
-                    "bank": qparams.split('&')[3].split('=')[1]
-
-                }
-                console.log(data, 'dataaa')
                 var orderId = qparams.split('&')[1].split('=')[1].split('_')[1];
-                console.log(orderId, 'orderId')
-               
-                fetch(`${orderStatusUpdate}${orderId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then((res) => res.json()
-                    )
-                    .then((data) => {
-                        console.log(data, 'datas')
-                        // sessionStorage.removeItem('totalUnits')
-                        // sessionStorage.removeItem('totalCost')
-                        // sessionStorage.setItem('totalCostddddd', 2000);
-                        // this.setState({ status: 'Delivered' })
+                if (qparams.split('?')[1].split('&')[0].split('=')[1] === "TXN_FAILURE") {
+                     axios.delete(`https://edu-groceryapp.herokuapp.com/deleteOneOrder/${orderId}`)
+                     .then((reponse) => {console.log(reponse,'reponse after delete')})
+                } else {
+                    var data = {
+                        "status": qparams.split('?')[1].split('&')[0].split('=')[1],
+                        "date": qparams.split('&')[2].split('=')[1].replace('%20', ' '),
+                        "bank_status": qparams.split('&')[0].split('=')[1],
+                        "bank": qparams.split('&')[3].split('=')[1]
+
+                    }
+                   
+
+                    fetch(`${orderStatusUpdate}${orderId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
                     })
+                        .then((res) => res.json()
+                        )
+                        .then((data) => {
+                            console.log(data, 'datas')
+                            // sessionStorage.removeItem('totalUnits')
+                            // sessionStorage.removeItem('totalCost')
+                            // sessionStorage.setItem('totalCostddddd', 2000);
+                            // this.setState({ status: 'Delivered' })
+                        })
+                }
             }
+
         }
         axios.get(getFinalOrdersurl).then((res) => { this.setState({ orders: res.data }) })
     }
