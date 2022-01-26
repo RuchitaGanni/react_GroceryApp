@@ -50,6 +50,9 @@
     height: 400px;
     width:100%;
 }
+.catName{
+    color: black
+}
 
 @media screen and (max-width:800px){
     .card{

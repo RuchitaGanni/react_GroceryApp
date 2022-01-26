@@ -48,11 +48,11 @@ const Products = (props) => {
     const addToCart = (pid, pname, q, price, pimage) => {
         let email = sessionStorage.getItem('userEmail');
         if (email == 'undefined') {
-            console.log('in undef')
+            // console.log('in undef')
             showAlert(true);
             setDisable(true)
         } else {
-            console.log('in  not undef')
+            // console.log('in  not undef')
             setDisable(false);
             showAlert(false);
             // starts adding to cart
@@ -68,7 +68,7 @@ const Products = (props) => {
                             if (item.quantity >= 5) {
 
                                 updqty = item.quantity;
-                                console.log('one', updqty)
+                                // console.log('one', updqty)
                             } else {
 
                                 updqty = item.quantity + 1;
@@ -96,6 +96,7 @@ const Products = (props) => {
             } else {
                 // setDisable('none')
                 prodObj = {
+                    user:email,
                     product_id: pid,
                     product_name: pname,
                     product_price: price,
@@ -103,7 +104,7 @@ const Products = (props) => {
                     quantity: q + 1,
                     status: 0
                 };
-
+// adding item to cartlist
                 axios.post(addToCartUrl, prodObj)
                     .then((reponse) => {
 

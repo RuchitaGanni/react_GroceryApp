@@ -32,6 +32,7 @@ class Signup extends Component {
             this.setState({ message: 'Please enter Password' })
         }
          else {
+             console.log('body to signup', JSON.stringify(this.state))
             fetch(registerUrl, {
                 method: 'POST',
                 headers: {

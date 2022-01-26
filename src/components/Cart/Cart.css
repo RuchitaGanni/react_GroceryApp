@@ -71,6 +71,7 @@ ul {
  
   float:right
 }
+
 thead>tr{
 
 /* background-color:#f3f6ee; */
@@ -82,8 +83,7 @@ th{
   font-size: 18px;
 }
 td{
- 
-  
+  font-weight: bold;
   font-family: Verdana;
   font-size: 15px;
 }

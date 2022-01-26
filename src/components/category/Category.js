@@ -72,17 +72,17 @@ const Category = (props) => {
                         <div className="card">
                             <img src={item.category_image} alt={item.category_name} className="cardImage" />
 
-                            <h4><center>{item.category_name}</center></h4>
+                            <h4 className="catName"><center>{item.category_name}</center></h4>
                         </div>
                     </Link>
                 )
             })
     } else {
         renderProduct =
-       
-            
-            <img src="/images/loader2.gif" alt="loader" className="LoaderGIF" />
-           
+
+            <img src="/images/loader4.gif" alt="loader" className="LoaderGIF" />
+        // <img src="/images/loader2.gif" alt="loader" className="LoaderGIF" />
+
         //return (<strong>No products Available</strong>)
     }
     return (
