@@ -12,7 +12,22 @@ class Booking extends Component {
         super()
         this.state = {
             orders: '',
-            showAlert:''
+            showAlert: ''
+        }
+    }
+    rederwarning = () => {
+
+        if (this.state.orders.length <= 0) {
+            return (
+                <>
+                    <div>
+                        <span style={{ color: "black", fontWeight: "bold", fontSize: "15px" }}>
+                            No orders found against user
+                        </span>
+                        <img src="/images/loader4.gif" alt="loader" className="LoaderGIF2" />
+                    </div>
+                </>
+            )
         }
     }
     render() {
@@ -21,7 +36,7 @@ class Booking extends Component {
                 <Header />
                 <div className="container" >
                     {this.state.showAlert &&
-                        <Alert variant="filled" severity="error" id="alert"
+                        <Alert variant="outlined" severity="warning" id="alert"
 
                             action={
                                 <IconButton
@@ -38,10 +53,11 @@ class Booking extends Component {
                             }
 
                         >
-                            <span className="errorMsg">Payment Failed, Please Try again</span>
+                            <span className="errorMsg">No orders available for user</span> 
                         </Alert>
 
                     }
+                    {this.rederwarning}
                     <table className="table table-hover">
                         <thead className="thead-dark" id="bookingsTh">
                             <tr >
@@ -70,7 +86,7 @@ class Booking extends Component {
             if (qparams) {
                 var orderId = qparams.split('&')[1].split('=')[1].split('_')[1];
                 if (qparams.split('?')[1].split('&')[0].split('=')[1] === "TXN_FAILURE") {
-                    this.setState({showAlert:true});
+                    this.setState({ showAlert: true });
                     axios.delete(`https://edu-groceryapp.herokuapp.com/deleteOneOrder/${orderId}`)
                         .then((reponse) => { console.log(reponse, 'reponse after delete') })
                 } else {
@@ -106,6 +122,9 @@ class Booking extends Component {
         }
         axios.get(`${getFinalOrdersurl}/${email}`)
             .then((res) => {
+                if(res.data.length <=0){
+                    this.setState({showAlert:true})
+                }
                 this.setState({ orders: res.data })
             })
     }

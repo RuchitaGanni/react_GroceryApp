@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import Cart from './Cart/Cart'
 import MainBody from './MainBody/MainBody';
 import ProductList from './ProductList/ProductList'
@@ -23,7 +24,7 @@ const Routing = () => {
                 {/* <Route exact path="/post" component={Post}/>
                 <Route path="/post/:topic" component={PostDetails}/>
                 <Route path="/profile" component={Profile}/> */}
-            {/* <Footer/> */}
+            <Footer/>
         </BrowserRouter>
     )
 }

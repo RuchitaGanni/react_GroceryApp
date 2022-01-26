@@ -2,12 +2,11 @@ import React from 'react';
 const BookingTable = (props) => {
 
     const renderMeal = ({ finalOrder }) => {
-        console.log('finalOrder', finalOrder.length)
+
         if (finalOrder) {
-
-            if (finalOrder.length > 0) {
-                console.log('finalOrder2', finalOrder.length)
-
+            console.log(typeof finalOrder.length, 'len')
+            if (finalOrder.length >= 1) {
+                console.log(finalOrder.length, 'if')
                 return finalOrder.map((item) => {
                     // if(item.bank_status)?1:0;
                     return (
@@ -32,27 +31,26 @@ const BookingTable = (props) => {
                     )
                 })
             }
-        } else {
-            return (
-                <>
-                    <td>
+            else {
 
-                    </td>
+                return (
+                    <>
 
-                    <td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
 
-                    </td>
-                    <td>
-                        <img src="/images/loader4.gif" alt="loader" className="LoaderGIF2" />
-                    </td>
-
-                </>
-            )
+                    </>
+                )
+            }
         }
     }
 
     return (
         <>
+
             <tbody>
                 {renderMeal(props)}
             </tbody>
